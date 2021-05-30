@@ -22,7 +22,12 @@ button.addEventListener('click', () => {
     cells.forEach((cell) => {
         cell.style.backgroundColor = 'white';
     });
-    const playerSelection = prompt("Please enter the number of squares you want to add");
+
+    let playerSelection = prompt("Please enter the number of squares you want to add");
+
+    if (playerSelection > 100) {
+        playerSelection = 100;
+    }
 
     var node = document.querySelector('.grid');
     node.querySelectorAll('*').forEach(n => n.remove());
@@ -32,7 +37,10 @@ button.addEventListener('click', () => {
         div.setAttribute('id', i.toString())
         div.classList.add('cell')
         div.addEventListener('mouseover', (e) => {
-            e.target.style.backgroundColor = 'blue';
+            /*e.target.style.backgroundColor = 'blue';*/
+
+            e.target.style.backgroundColor = Math.floor(Math.random()*16777215).toString(16);
+
         });
         gridDiv.appendChild(div)
     }
